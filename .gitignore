@@ -1,0 +1,20 @@
+# Backend
+**/appsettings.json
+**/appsettings.Development.json
+**/bin/
+**/obj/
+**/.vs/
+*.user
+*.suo
+
+# Frontend
+**/node_modules/
+**/build/
+**/dist/
+
+# General
+*.log
+*.zip
+temp_repo/
+media/
+assests/

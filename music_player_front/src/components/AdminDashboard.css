@@ -1,0 +1,141 @@
+.admin-dashboard {
+  padding: 2rem;
+  background-color: #121212;
+  min-height: 100vh;
+  color: white;
+}
+
+.admin-title {
+  margin-bottom: 2rem;
+  color: #1db954;
+  font-size: 2rem;
+}
+
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background-color: #282828;
+  color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.stat-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.stat-icon {
+  color: #1db954;
+  font-size: 1.5rem;
+}
+
+.stat-title {
+  font-size: 1.125rem;
+  margin: 0;
+}
+
+.stat-value {
+  color: #1db954;
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+.admin-tabs {
+  display: flex;
+  border-bottom: 2px solid #282828;
+  margin-bottom: 1rem;
+}
+
+.admin-tab {
+  background: none;
+  border: none;
+  color: white;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s;
+  font-size: 1rem;
+}
+
+.admin-tab:hover {
+  background-color: rgba(29, 185, 84, 0.1);
+}
+
+.admin-tab.active {
+  color: #1db954;
+  border-bottom-color: #1db954;
+}
+
+.admin-table-container {
+  background-color: #282828;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table thead {
+  background-color: #333;
+}
+
+.admin-table th {
+  color: white;
+  font-weight: bold;
+  padding: 1rem;
+  text-align: left;
+}
+
+.admin-table td {
+  color: white;
+  padding: 1rem;
+  border-top: 1px solid #404040;
+}
+
+.status-chip {
+  padding: 0.25rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.status-chip.success {
+  background-color: #28a745;
+  color: white;
+}
+
+.status-chip.error {
+  background-color: #dc3545;
+  color: white;
+}
+
+.status-chip.warning {
+  background-color: #ffc107;
+  color: black;
+}
+
+.status-chip.default {
+  background-color: #6c757d;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .admin-dashboard {
+    padding: 1rem;
+  }
+  
+  .admin-table-container {
+    overflow-x: scroll;
+  }
+}
