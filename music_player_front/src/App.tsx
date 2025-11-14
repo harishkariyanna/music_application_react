@@ -142,7 +142,7 @@ function App() {
         <Route path="/register" element={!isAuthenticated ? <Register onRegister={handleRegister} onSwitchToLogin={() => window.location.href = '/login'} /> : <Navigate to="/" />} />
         <Route path="/forgot-password" element={!isAuthenticated ? <ForgotPassword onBack={() => window.location.href = '/login'} /> : <Navigate to="/" />} />
         
-        <Route path="/" element={isAuthenticated ? <MediaList key={refreshMedia} onMusicPlay={(media, index) => { setGlobalYouTubePlayer(null); setGlobalMusicPlayer({media, currentIndex: index}); }} /> : <Navigate to="/login" />} />
+        <Route path="/" element={isAuthenticated ? <MediaList onMusicPlay={(media, index) => { setGlobalYouTubePlayer(null); setGlobalMusicPlayer({media, currentIndex: index}); }} /> : <Navigate to="/login" />} />
         <Route path="/playlists" element={isAuthenticated ? <Playlists onMusicPlay={(media, index, playlistName, isShuffled) => { setGlobalYouTubePlayer(null); setGlobalMusicPlayer({media, currentIndex: index, playlistName, isShuffled}); }} /> : <Navigate to="/login" />} />
         <Route path="/upload" element={isAuthenticated && userRole >= UserRole.Creator ? <MediaUpload onUploadSuccess={handleUploadSuccess} /> : <Navigate to="/login" />} />
         <Route path="/myuploads" element={isAuthenticated && userRole >= UserRole.Creator ? <MyUploads /> : <Navigate to="/login" />} />

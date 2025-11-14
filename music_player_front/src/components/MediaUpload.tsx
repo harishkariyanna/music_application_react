@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { mediaService } from '../services/api';
+import Toast from './Toast';
 import './MediaUpload.css';
 
 enum MediaType {
@@ -58,6 +59,7 @@ export default function MediaUpload({ onUploadSuccess }: MediaUploadProps) {
   const [error, setError] = useState('');
   const [errors, setErrors] = useState<ValidationErrors>({});
   const [touched, setTouched] = useState<{ [key: string]: boolean }>({});
+  const [toast, setToast] = useState<{message: string, type: 'success' | 'error' | 'warning'} | null>(null);
   const [composers, setComposers] = useState<string[]>([]);
   const [albums, setAlbums] = useState<string[]>([]);
   
@@ -243,10 +245,12 @@ export default function MediaUpload({ onUploadSuccess }: MediaUploadProps) {
       });
       setErrors({});
       setTouched({});
-      alert('Upload successful!');
+      setToast({message: 'Upload successful!', type: 'success'});
       onUploadSuccess();
     } catch (err: any) {
-      setError(err.response?.data || 'Upload failed');
+      const errorMsg = err.response?.data || 'Upload failed';
+      setError(errorMsg);
+      setToast({message: errorMsg, type: 'error'});
     } finally {
       setLoading(false);
     }
@@ -490,6 +494,7 @@ export default function MediaUpload({ onUploadSuccess }: MediaUploadProps) {
           </button>
         </form>
       </div>
+      {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
     </div>
   );
 }

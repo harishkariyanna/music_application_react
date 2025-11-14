@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { mediaService } from '../services/api';
 import axios from 'axios';
 import Toast from './Toast';
@@ -81,9 +81,12 @@ export default function MediaList({ onMusicPlay }: MediaListProps) {
   
   const subscriptionPlan = localStorage.getItem('subscriptionPlan') || 'Free';
   const isPremium = subscriptionPlan === 'Premium' || subscriptionPlan === 'Family';
+  const loadingPromise = useRef<Promise<any> | null>(null);
 
   useEffect(() => {
-    loadMedia();
+    if (!loadingPromise.current) {
+      loadingPromise.current = loadMedia();
+    }
   }, []);
 
   const loadMedia = async () => {
